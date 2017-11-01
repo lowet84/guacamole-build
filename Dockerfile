@@ -1,6 +1,6 @@
 FROM tomcat:9-jre8-alpine
 
-ADD guacamole-client/guacamole-docker/bin/start.sh /start
+ADD guacamole-client/guacamole-docker/bin/start.sh /start.sh
 RUN rm -r /usr/local/tomcat/webapps/ROOT
 ADD guacamole-client/guacamole.war /usr/local/tomcat/webapps/ROOT.war
 
