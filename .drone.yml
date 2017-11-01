@@ -1,6 +1,7 @@
 pipeline:
-  build:
+  build-guacamole:
     image: alpine:3.6
+    group: build
     commands:
       - apk add --no-cache maven openjdk8 git curl wget
       - apk --update add tar
@@ -12,8 +13,9 @@ pipeline:
       - mv /out .
       - ls out
   
-  docker:
+  docker-guacamole:
     image: plugins/docker
+    group: docker
     repo: lowet84/guacamole
     secrets: [ docker_username, docker_password ]
     tags: alpine
