@@ -1,14 +1,12 @@
 pipeline:
   prepare:
     image: alpine:3.6
-    group: prepare
     commands:
       - apk add --no-cache git
       - git clone https://github.com/glyptodon/guacamole-client
 
   build:
     image: alpine:3.6
-    group: build
     commands:
       - apk add --no-cache maven openjdk8 git curl wget
       - apk --update add tar
@@ -26,13 +24,11 @@ pipeline:
   
   init:
     image: alpine:3.6
-    group: init
     commands:
       - find / -name init.sql
 
   # docker-guacamole:
   #   image: plugins/docker
-  #   group: docker
   #   repo: lowet84/guacamole
   #   secrets: [ docker_username, docker_password ]
   #   tags: alpine
@@ -41,7 +37,6 @@ pipeline:
 
   # docker-init:
   #   image: plugins/docker
-  #   group: docker
   #   repo: lowet84/mysql-guacamole-init
   #   secrets: [ docker_username, docker_password ]
   #   tags: alpine
