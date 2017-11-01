@@ -1,4 +1,7 @@
-FROM mysql
+FROM alpine:3.6
+
+RUN apk add --no-cache --update mysql mysql-client
+COPY my.cnf /etc/mysql/my.cnf
 
 ADD init.sh /init.sh
 ADD init.sql /init.sql

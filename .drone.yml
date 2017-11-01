@@ -23,7 +23,7 @@ pipeline:
     image: alpine:3.6
     group: init
     commands:
-      - find . -name *.sql
+      - find / -name *.sql
       # - cat create-database.sql > init.sql
       # - cat guacamole-client/guacamole-docker/bin/initdb.sh >> init.sql
       # - cat init.sql
