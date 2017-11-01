@@ -5,7 +5,6 @@ pipeline:
       - apk add --no-cache maven openjdk8 git curl
       - apk --update add tar
       - git clone https://github.com/glyptodon/guacamole-client
-      - mkdir -p out
-      - ls
-      - ./guacamole-client/guacamole-docker/bin/build-guacamole.sh guacamole-client ${PWD}/out
-      - ls out
+      - mkdir -p guacamole-client/guacamole-docker/bin/out
+      - ./guacamole-client/guacamole-docker/bin/build-guacamole.sh guacamole-client out
+      - ls guacamole-client/guacamole-docker/bin/out
