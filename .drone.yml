@@ -6,4 +6,4 @@ pipeline:
       - git clone https://github.com/glyptodon/guacamole-client
       - mkdir out
       - ls
-      - ./guacamole-client/guacamole-docker/bin/build-guacamole.sh . out
+      - ./guacamole-client/guacamole-docker/bin/build-guacamole.sh guacamole-client out
