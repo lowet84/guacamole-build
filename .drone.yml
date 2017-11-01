@@ -8,31 +8,10 @@ pipeline:
       - cd guacamole-client/guacamole-docker/bin
       - ./build-guacamole.sh ../.. .
   
-  test:
-    image: tomcat:9.0-jre8-alpine
-    commands:
-      - export GUACD_HOSTNAME=guacd
-      - export MYSQL_DATABASE=guacamole_db
-      - export MYSQL_USER=guacamole_user
-      - export MYSQL_PASSWORD=guacamole_password
-      - export MYSQL_HOSTNAME=mysql
-      - export GUACD_PORT_4822_TCP_ADDR=guacd
-      - export GUACD_PORT_4822_TCP_PORT=4822
-      - mkdir -p /opt/guacamole/bin
-      - cp guacamole-client/guacamole-docker/bin/start.sh /opt/guacamole/bin/start.sh
-      - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
-      # - apk add --no-cache openjdk8 wget bash
-      # - apk --update add tar
-      # - mkdir -p /usr/local/tomcat/webapps
-      # - cd /usr/local/tomcat
-      # - wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz
-      # - tar xvzf apache-tomcat-8.5.23.tar.gz
-      # - cd apache-tomcat-8.5.23
-      # - mv * ..
-      # - cd ..
-      # - rmdir apache-tomcat-8.5.23
-      # - cp bin/catalina.sh catalina.sh
-      # - chmod +x catalina.sh
-      # - cd /usr/local/tomcat
-      # - ls
-      - bash /opt/guacamole/bin/start.sh
+  docker:
+    image: plugins/docker
+    repo: lowet84/guacamole:alpine
+    secrets: [ docker_username, docker_password ]
+    tags: latest
+    when:
+      branch: master
