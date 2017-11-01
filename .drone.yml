@@ -6,9 +6,11 @@ pipeline:
       - apk --update add tar
       - git clone https://github.com/glyptodon/guacamole-client
       - cd guacamole-client/guacamole-docker/bin
-      - ./build-guacamole.sh ../.. .
+      - mkdir -p /out
+      - ./build-guacamole.sh ../.. /out
       - cd ../..
-      - ls
+      - mv /out .
+      - ls out
   
   # docker:
   #   image: plugins/docker
