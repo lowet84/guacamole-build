@@ -23,4 +23,5 @@ pipeline:
       - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
       - apk add --no-cache tomcat-native
       - mkdir -p /usr/local/tomcat/webapps/
+      - find / -name catalina.sh
       - /opt/guacamole/bin/start.sh
