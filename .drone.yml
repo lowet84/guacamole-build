@@ -18,6 +18,7 @@ pipeline:
       - cd ../..
       - mv /out .
       - ls out
+      - find / -name *.sql
   
   build-init:
     image: alpine:3.6
