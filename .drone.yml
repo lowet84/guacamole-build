@@ -19,7 +19,9 @@ pipeline:
       - mv /out .
       - cat ../create-database.sql > init.sql
       - cat out/mysql/schema/*.sql >> init.sql
-      - mv init.sq ..
+      - mv init.sql ..
+      - cd ..
+      - cat init.sql
 
   
   init:
