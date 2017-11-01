@@ -1,4 +1,4 @@
-FROM tomcat:9-jre8-alpine
+FROM tomcat:8-jre8-alpine
 
 ADD guacamole-client/guacamole-docker/bin/start.sh /start.sh
 RUN rm -r /usr/local/tomcat/webapps/ROOT
