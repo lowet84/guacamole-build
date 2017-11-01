@@ -32,6 +32,7 @@ pipeline:
       - cd ..
       - rmdir apache-tomcat-9.0.1
       - ln -s bin/catalina.sh catalina.sh
+      - chmod +x catalina.sh
       - cd /usr/local/tomcat
       - ls
       - /opt/guacamole/bin/start.sh
