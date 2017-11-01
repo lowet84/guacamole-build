@@ -21,7 +21,7 @@ pipeline:
       - mkdir -p /opt/guacamole/bin
       - cp guacamole-client/guacamole-docker/bin/start.sh /opt/guacamole/bin/start.sh
       - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
-      - apk add --no-cache openjdk8 wget 
+      - apk add --no-cache openjdk8 wget bash
       - apk --update add tar
       - mkdir -p /usr/local/tomcat/webapps
       - cd /usr/local/tomcat
@@ -35,4 +35,4 @@ pipeline:
       - chmod +x catalina.sh
       - cd /usr/local/tomcat
       - ls
-      - /opt/guacamole/bin/start.sh
+      - bash /opt/guacamole/bin/start.sh
