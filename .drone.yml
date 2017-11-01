@@ -1,0 +1,8 @@
+pipeline:
+  build:
+    image: alpine:3.6
+    commands:
+      - apk add --no-cache maven openjdk8 git
+      - git clone https://github.com/glyptodon/guacamole-client
+      - mkdir out
+      - ./guacamole-docker/bin/build-guacamole.sh . /out
