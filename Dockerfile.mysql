@@ -1,0 +1,11 @@
+FROM alpine:3.6
+
+WORKDIR /app
+VOLUME /app
+COPY startup.sh /startup.sh
+
+RUN apk add --update --no-cache mysql mysql-client
+COPY my.cnf /etc/mysql/my.cnf
+
+EXPOSE 3306
+CMD ["/startup.sh"]

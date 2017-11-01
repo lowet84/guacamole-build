@@ -35,3 +35,12 @@ pipeline:
     dockerfile: Dockerfile.init
     when:
       branch: master
+
+  docker-mysql:
+    image: plugins/docker
+    repo: lowet84/mysql
+    secrets: [ docker_username, docker_password ]
+    tags: alpine
+    dockerfile: Dockerfile.mysql
+    when:
+      branch: master
