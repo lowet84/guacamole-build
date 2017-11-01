@@ -11,6 +11,13 @@ pipeline:
   test:
     image: alpine:3.6
     commands:
+      - export GUACD_HOSTNAME=guacd
+      - export MYSQL_DATABASE=guacamole_db
+      - export MYSQL_USER=guacamole_user
+      - export MYSQL_PASSWORD=guacamole_password
+      - export MYSQL_HOSTNAME=mysql
+      - export GUACD_PORT_4822_TCP_ADDR=guacd
+      - export GUACD_PORT_4822_TCP_PORT=4822
       - mkdir -p /opt/guacamole/bin
       - cp guacamole-client/guacamole-docker/bin/start.sh /opt/guacamole/bin/start.sh
       - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
