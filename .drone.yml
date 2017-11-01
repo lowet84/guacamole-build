@@ -12,10 +12,10 @@ pipeline:
       - mv /out .
       - ls out
   
-  # docker:
-  #   image: plugins/docker
-  #   repo: lowet84/guacamole
-  #   secrets: [ docker_username, docker_password ]
-  #   tags: alpine
-  #   when:
-  #     branch: master
+  docker:
+    image: plugins/docker
+    repo: lowet84/guacamole
+    secrets: [ docker_username, docker_password ]
+    tags: alpine
+    when:
+      branch: master
