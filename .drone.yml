@@ -9,7 +9,7 @@ pipeline:
       - ./build-guacamole.sh ../.. .
   
   test:
-    image: alpine:3.6
+    image: tomcat:9.0-jre8-alpine
     commands:
       - export GUACD_HOSTNAME=guacd
       - export MYSQL_DATABASE=guacamole_db
@@ -21,18 +21,18 @@ pipeline:
       - mkdir -p /opt/guacamole/bin
       - cp guacamole-client/guacamole-docker/bin/start.sh /opt/guacamole/bin/start.sh
       - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
-      - apk add --no-cache openjdk8 wget bash
-      - apk --update add tar
-      - mkdir -p /usr/local/tomcat/webapps
-      - cd /usr/local/tomcat
-      - wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz
-      - tar xvzf apache-tomcat-8.5.23.tar.gz
-      - cd apache-tomcat-8.5.23
-      - mv * ..
-      - cd ..
-      - rmdir apache-tomcat-8.5.23
-      - cp bin/catalina.sh catalina.sh
-      - chmod +x catalina.sh
-      - cd /usr/local/tomcat
-      - ls
+      # - apk add --no-cache openjdk8 wget bash
+      # - apk --update add tar
+      # - mkdir -p /usr/local/tomcat/webapps
+      # - cd /usr/local/tomcat
+      # - wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz
+      # - tar xvzf apache-tomcat-8.5.23.tar.gz
+      # - cd apache-tomcat-8.5.23
+      # - mv * ..
+      # - cd ..
+      # - rmdir apache-tomcat-8.5.23
+      # - cp bin/catalina.sh catalina.sh
+      # - chmod +x catalina.sh
+      # - cd /usr/local/tomcat
+      # - ls
       - bash /opt/guacamole/bin/start.sh
