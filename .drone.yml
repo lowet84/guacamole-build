@@ -21,4 +21,5 @@ pipeline:
       - mkdir -p /opt/guacamole/bin
       - cp guacamole-client/guacamole-docker/bin/start.sh /opt/guacamole/bin/start.sh
       - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
+      - apk add --no-cache tomcat-native
       - /opt/guacamole/bin/start.sh
