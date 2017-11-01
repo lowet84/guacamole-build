@@ -6,27 +6,27 @@ pipeline:
       - apk add --no-cache git
       - git clone https://github.com/glyptodon/guacamole-client
 
-  # build-guacamole:
-  #   image: alpine:3.6
-  #   group: build
-  #   commands:
-  #     - apk add --no-cache maven openjdk8 git curl wget
-  #     - apk --update add tar
-  #     - cd guacamole-client/guacamole-docker/bin
-  #     - mkdir -p /out
-  #     - ./build-guacamole.sh ../.. /out
-  #     - cd ../..
-  #     - mv /out .
-  #     - ls out
-  
-  build-init:
+  build-guacamole:
     image: alpine:3.6
     group: build
     commands:
+      - apk add --no-cache maven openjdk8 git curl wget
+      - apk --update add tar
+      - cd guacamole-client/guacamole-docker/bin
+      - mkdir -p /out
+      - ./build-guacamole.sh ../.. /out
+      - cd ../..
+      - mv /out .
+      - ls out
+  
+  build-init:
+    image: alpine:3.6
+    group: init
+    commands:
       - find . -name *.sql
-      - cat create-database.sql > init.sql
-      - cat guacamole-client/guacamole-docker/bin/initdb.sh >> init.sql
-      - cat init.sql
+      # - cat create-database.sql > init.sql
+      # - cat guacamole-client/guacamole-docker/bin/initdb.sh >> init.sql
+      # - cat init.sql
 
   # docker-guacamole:
   #   image: plugins/docker
