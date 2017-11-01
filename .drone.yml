@@ -17,8 +17,9 @@ pipeline:
       - ./build-guacamole.sh ../.. /out
       - cd ../..
       - mv /out .
-      - cat create-database.sql > init.sql
+      - cat ../create-database.sql > init.sql
       - cat out/mysql/schema/*.sql >> init.sql
+      - mv init.sq ..
 
   
   init:
