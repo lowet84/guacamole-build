@@ -17,7 +17,9 @@ pipeline:
     image: alpine:3.6
     group: test
     commands:
-      - find . -name initdb.sh
+      - cat create-database.sql > init.sql
+      - cat guacamole-client/guacamole-docker/bin/initdb.sh >> init.sql
+      - cat init.sql
 
   docker-guacamole:
     image: plugins/docker
