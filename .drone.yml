@@ -27,10 +27,10 @@ pipeline:
       - cd /usr/local/tomcat
       - wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz
       - tar xvzf apache-tomcat-8.5.23.tar.gz
-      - cd apache-tomcat-8.5.23.tar.gz
+      - cd apache-tomcat-8.5.23
       - mv * ..
       - cd ..
-      - rmdir apache-tomcat-8.5.23.tar.gz
+      - rmdir apache-tomcat-8.5.23
       - cp bin/catalina.sh catalina.sh
       - chmod +x catalina.sh
       - cd /usr/local/tomcat
