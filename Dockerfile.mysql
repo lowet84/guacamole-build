@@ -6,6 +6,7 @@ COPY startup.sh /startup.sh
 
 RUN apk add --update --no-cache mysql mysql-client
 COPY my.cnf /etc/mysql/my.cnf
+RUN chmod +x /startup
 
 EXPOSE 3306
 CMD ["/startup.sh"]
