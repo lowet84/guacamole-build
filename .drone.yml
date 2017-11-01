@@ -5,8 +5,12 @@ pipeline:
       - apk add --no-cache maven openjdk8 git curl
       - apk --update add tar
       - git clone https://github.com/glyptodon/guacamole-client
-      - mkdir guacamole-client/out
       - cd guacamole-client/guacamole-docker/bin
-      - ./build-guacamole.sh ../.. out
-      - cd out
-      - ls
+      - ./build-guacamole.sh ../.. .
+  
+  test:
+    image: alpine:3.6
+    commands:
+      - cp guacamole-client/guacamole-docker/bin/start.sh /opt/guacamole/bin/start.sh
+      - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
+      - /opt/guacamole/bin/start.sh
