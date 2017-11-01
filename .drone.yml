@@ -3,6 +3,7 @@ pipeline:
     image: alpine:3.6
     commands:
       - apk add --no-cache maven openjdk8 git
+      - apk --update add tar
       - git clone https://github.com/glyptodon/guacamole-client
       - mkdir -p out
       - ls
