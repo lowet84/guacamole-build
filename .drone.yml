@@ -6,7 +6,7 @@ pipeline:
       - apk add --no-cache git
       - git clone https://github.com/glyptodon/guacamole-client
 
-  build-guacamole:
+  build:
     image: alpine:3.6
     group: build
     commands:
@@ -17,17 +17,15 @@ pipeline:
       - ./build-guacamole.sh ../.. /out
       - cd ../..
       - mv /out .
-      - ls out
-      - find / -name initdb.sh
+      - cat create-database.sql > init.sql
+      - cat out/mysql/schema/*.sql >> init.sql
+
   
-  build-init:
+  init:
     image: alpine:3.6
     group: init
     commands:
-      - find / -name initdb.sh
-      # - cat create-database.sql > init.sql
-      # - cat guacamole-client/guacamole-docker/bin/initdb.sh >> init.sql
-      # - cat init.sql
+      - find / -name init.sql
 
   # docker-guacamole:
   #   image: plugins/docker
