@@ -1,9 +1,9 @@
 pipeline:
-  clone:
+  prepare:
     image: alpine:3.6
+    group: prepare
     commands:
       - apk add --no-cache git
-      - apk --update add tar
       - git clone https://github.com/glyptodon/guacamole-client
 
   build-guacamole:
@@ -11,6 +11,7 @@ pipeline:
     group: build
     commands:
       - apk add --no-cache maven openjdk8 git curl wget
+      - apk --update add tar
       - cd guacamole-client/guacamole-docker/bin
       - mkdir -p /out
       - ./build-guacamole.sh ../.. /out
