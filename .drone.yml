@@ -26,5 +26,10 @@ pipeline:
       - mkdir -p /usr/local/tomcat/webapps
       - cd /usr/local/tomcat
       - wget http://apache.mirrors.spacedump.net/tomcat/tomcat-9/v9.0.1/bin/apache-tomcat-9.0.1.tar.gz
-      - tar xvzf apache-tomcat-9.0.1.tar.gz --strip-components=1
+      - tar xvzf apache-tomcat-9.0.1.tar.gz
+      - cd apache-tomcat-9.0.1
+      - mv -r * ..
+      - cd ..
+      - rmdir apache-tomcat-9.0.1
+      - ls
       - /opt/guacamole/bin/start.sh
