@@ -2,9 +2,8 @@ pipeline:
   build:
     image: alpine:3.6
     commands:
-      - apk add --no-cache maven openjdk8 git curl wget 
+      - apk add --no-cache maven openjdk8 git curl wget
       - apk --update add tar
-      - wget https://raw.githubusercontent.com/apache/tomcat/50a4a7384e304308f2d4b76fd3d3f41b379e4fb8/bin/catalina.sh
       - git clone https://github.com/glyptodon/guacamole-client
       - cd guacamole-client/guacamole-docker/bin
       - ./build-guacamole.sh ../.. .
@@ -22,7 +21,10 @@ pipeline:
       - mkdir -p /opt/guacamole/bin
       - cp guacamole-client/guacamole-docker/bin/start.sh /opt/guacamole/bin/start.sh
       - cp guacamole-client/guacamole.war /opt/guacamole/guacamole.war
-      - apk add --no-cache tomcat-native
-      - mkdir -p /usr/local/tomcat/webapps/
-      - cp catalina.sh /usr/local/tomcat/catalina.sh
+      - apk add --no-cache openjdk8 wget 
+      - apk --update add tar
+      - mkdir -p /usr/local/tomcat/webapps
+      - cd /usr/local/tomcat
+      - wget http://apache.mirrors.spacedump.net/tomcat/tomcat-9/v9.0.1/bin/apache-tomcat-9.0.1.tar.gz
+      - tar xvzf apache-tomcat-9.0.1.tar.gz
       - /opt/guacamole/bin/start.sh
