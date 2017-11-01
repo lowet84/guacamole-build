@@ -18,28 +18,20 @@ pipeline:
       - cat ../create-database.sql > init.sql
       - cat out/mysql/schema/*.sql >> init.sql
       - mv init.sql ..
-      - cd ..
-      - cat init.sql
 
-  
-  init:
-    image: alpine:3.6
-    commands:
-      - find / -name init.sql
+  docker-guacamole:
+    image: plugins/docker
+    repo: lowet84/guacamole
+    secrets: [ docker_username, docker_password ]
+    tags: alpine
+    when:
+      branch: master
 
-  # docker-guacamole:
-  #   image: plugins/docker
-  #   repo: lowet84/guacamole
-  #   secrets: [ docker_username, docker_password ]
-  #   tags: alpine
-  #   when:
-  #     branch: master
-
-  # docker-init:
-  #   image: plugins/docker
-  #   repo: lowet84/mysql-guacamole-init
-  #   secrets: [ docker_username, docker_password ]
-  #   tags: alpine
-  #   dockerfile: Dockerfile.init
-  #   when:
-  #     branch: master
+  docker-init:
+    image: plugins/docker
+    repo: lowet84/mysql-guacamole-init
+    secrets: [ docker_username, docker_password ]
+    tags: alpine
+    dockerfile: Dockerfile.init
+    when:
+      branch: master
