@@ -8,4 +8,5 @@ pipeline:
       - mkdir guacamole-client/out
       - cd guacamole-client/guacamole-docker/bin
       - ./build-guacamole.sh ../.. out
+      - cd out
       - ls
