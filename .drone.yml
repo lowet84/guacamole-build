@@ -18,13 +18,13 @@ pipeline:
       - cd ../..
       - mv /out .
       - ls out
-      - find / -name *.sql
+      - find / -name initdb.sh
   
   build-init:
     image: alpine:3.6
     group: init
     commands:
-      - find / -name *.sql
+      - find / -name initdb.sh
       # - cat create-database.sql > init.sql
       # - cat guacamole-client/guacamole-docker/bin/initdb.sh >> init.sql
       # - cat init.sql
