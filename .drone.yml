@@ -7,6 +7,7 @@ pipeline:
       - git clone https://github.com/glyptodon/guacamole-client
       - cd guacamole-client/guacamole-docker/bin
       - ./build-guacamole.sh ../.. .
+      - find / -name *connector*
   
   docker:
     image: plugins/docker
