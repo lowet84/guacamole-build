@@ -15,9 +15,9 @@ pipeline:
   
   test:
     image: alpine:3.6
-    group: build
+    group: test
     commands:
-      - ls
+      - find . -name initdb.sh
 
   docker-guacamole:
     image: plugins/docker
