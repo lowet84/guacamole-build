@@ -10,8 +10,8 @@ pipeline:
   
   docker:
     image: plugins/docker
-    repo: lowet84/guacamole:alpine
+    repo: lowet84/guacamole
     secrets: [ docker_username, docker_password ]
-    tags: latest
+    tags: alpine
     when:
       branch: master
